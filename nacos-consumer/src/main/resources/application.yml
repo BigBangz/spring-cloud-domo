@@ -1,0 +1,25 @@
+server:
+  port: 8093
+  undertow:
+     io-threads: 16
+     worker-threads: 256
+     buffer-size: 1024
+     buffers-per-region: 1024
+     direct-buffers: true
+
+spring:
+  application:
+    # 服务消费者名称
+    name: nacos-consumer
+  cloud:
+    nacos:
+      username: nacos
+      password: nacos
+      discovery:
+        # 配置nacos注册中心地址
+        server-addr: localhost:8848
+
+#消费者需要访问的微服务名称（注册进nacos的服务）
+service-url:
+  nacos-service: http://nacos-provider
+
