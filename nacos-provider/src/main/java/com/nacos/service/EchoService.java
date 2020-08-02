@@ -1,4 +1,4 @@
-package com.alibaba.cloud.nacos.service;
+package com.nacos.service;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

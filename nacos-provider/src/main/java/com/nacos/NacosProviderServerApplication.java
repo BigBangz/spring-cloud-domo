@@ -1,4 +1,4 @@
-package com.alibaba.cloud.nacos;/*
+package com.nacos;/*
  * Copyright 2013-2018 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,11 +26,4 @@ public class NacosProviderServerApplication {
 		SpringApplication.run(NacosProviderServerApplication.class, args);
 	}
 
-//	@RestController
-//	public class EchoController {
-//		@GetMapping(value = "/echo/{string}")
-//		public String echo(@PathVariable String string) {
-//			return "Hello Nacos Discovery " + string;
-//		}
-//	}
 }

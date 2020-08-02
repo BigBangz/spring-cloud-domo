@@ -6,6 +6,8 @@ server:
      buffer-size: 1024
      buffers-per-region: 1024
      direct-buffers: true
+#AOP
+spring.aop.auto:  true
 
 spring:
   application:
@@ -17,7 +19,7 @@ spring:
       password: nacos
       discovery:
         # 配置nacos注册中心地址
-        server-addr: 192.168.117.1:8848
+        server-addr: localhost:8848
 
 management:
   endpoints:
