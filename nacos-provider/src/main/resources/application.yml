@@ -12,7 +12,7 @@ spring.aop.auto:  true
 spring:
   application:
     # 服务提供者名称
-    name: nacos-provider
+    name: nacos-provider-service
   cloud:
     nacos:
       username: nacos

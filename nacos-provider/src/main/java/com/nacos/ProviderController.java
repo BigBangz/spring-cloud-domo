@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Provider1Controller {
+public class ProviderController {
 
-    @GetMapping(value = "/echo1/{string}")
+    @GetMapping(value = "/echo/{string}")
     public String echo(@PathVariable String string) {
         return string;
     }

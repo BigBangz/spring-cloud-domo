@@ -1,4 +1,4 @@
-package com.nacos.controller;
+package com.nacos.cloud.config;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
- 
+
 /**
  * RestTemplate配置
  * 这是一种JavaConfig的容器配置，用于spring容器的bean收集与注册，并通过参数传递的方式实现依赖注入。
@@ -15,21 +15,21 @@ import org.springframework.web.client.RestTemplate;
  * @author mht
  *
  */
-@Configuration
-public class RestTemplateConfig {
-
-    @Bean
-    @LoadBalanced
-    public RestTemplate restTemplate(ClientHttpRequestFactory factory) {
-        return new RestTemplate(factory);
-    }
-
-    @Bean
-    public ClientHttpRequestFactory simpleClientHttpRequestFactory() {
-        SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
-        factory.setReadTimeout(5000);//ms
-        factory.setConnectTimeout(15000);//ms
-        return factory;
-    }
-
-}
+//@Configuration
+//public class RestTemplateConfig {
+//
+//    @Bean
+//    @LoadBalanced
+//    public RestTemplate restTemplate(ClientHttpRequestFactory factory) {
+//        return new RestTemplate(factory);
+//    }
+//
+//    @Bean
+//    public ClientHttpRequestFactory simpleClientHttpRequestFactory() {
+//        SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
+//        factory.setReadTimeout(5000);//ms
+//        factory.setConnectTimeout(15000);//ms
+//        return factory;
+//    }
+//
+//}
