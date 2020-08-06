@@ -76,7 +76,7 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-config-server</artifactId>
-            <version>RELEASE</version>
+            <version>1.4.7.RELEASE</version>
             <scope>provided</scope>
         </dependency>
         <!--Undertow Web 服务器-->
