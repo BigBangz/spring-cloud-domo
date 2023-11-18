@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @EnableAutoConfiguration
-public class coreExample {
+public class CoreExample {
 
 	@RequestMapping("/")
 	String home() {
@@ -12,7 +12,7 @@ public class coreExample {
 	}
 
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(coreExample.class, args);
+		SpringApplication.run(CoreExample.class, args);
 	}
 
 }
