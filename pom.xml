@@ -79,7 +79,7 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-config-server</artifactId>
-            <version>RELEASE</version>
+            <version>${spring.cloud.alibaba.version}</version>
             <scope>provided</scope>
         </dependency>
         <!--Undertow Web 服务器-->
