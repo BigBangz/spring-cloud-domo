@@ -5,14 +5,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Objects;
 
 @Component
 public class UserService {
 
-    @Autowired
+    @Autowired(required = false)
     private MailService mailService;
 
-    public void setMailService(@Autowired MailService mailService) {
+    public void setMailService(@Autowired(required = false) MailService mailService) {
         this.mailService = mailService;
     }
 
@@ -24,7 +25,9 @@ public class UserService {
     public User login(String email, String password) {
         for (User user : users) {
             if (user.getEmail().equalsIgnoreCase(email) && user.getPassword().equals(password)) {
-                mailService.sendLoginMail(user);
+                if(Objects.nonNull(mailService)){
+                    mailService.sendLoginMail(user);
+                }
                 return user;
             }
         }

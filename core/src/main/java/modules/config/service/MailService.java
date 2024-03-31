@@ -1,6 +1,7 @@
 package modules.config.service;
 
 import modules.entity.User;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 import java.time.ZoneId;
@@ -8,6 +9,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Component
+@ConditionalOnProperty(name = "app.smtp", havingValue = "true")
 public class MailService {
     private ZoneId zoneId = ZoneId.systemDefault();
 
