@@ -1,6 +1,7 @@
 package modules.config.util;
 
 import com.alibaba.fastjson.JSON;
+import modules.config.annotation.MetricTime;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
@@ -32,6 +33,14 @@ public class ReaderFile {
     private String sourceOne;
 
     private String sourceTwo;
+
+    public String getSourceOne() {
+        return sourceOne;
+    }
+
+    public String getSourceTwo() {
+        return sourceTwo;
+    }
 
     @PostConstruct
     public void init() throws IOException {
