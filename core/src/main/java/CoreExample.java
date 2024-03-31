@@ -1,4 +1,5 @@
 import modules.config.IocConfig;
+import modules.config.service.DataSourceServie;
 import modules.config.service.UserService;
 import modules.entity.User;
 import org.springframework.boot.*;
@@ -23,6 +24,8 @@ public class CoreExample {
         UserService userService = context.getBean(UserService.class);
         User user = userService.login("bob@example.com", "password");
         System.out.println(user.getName());
+        DataSourceServie dataSourceServie = context.getBean(DataSourceServie.class);
+        dataSourceServie.getDataSourceServie();
     }
 
 }
