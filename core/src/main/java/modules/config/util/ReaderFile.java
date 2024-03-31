@@ -33,14 +33,6 @@ public class ReaderFile {
 
     private String sourceTwo;
 
-    public String getSourceOne() {
-        return sourceOne;
-    }
-
-    public String getSourceTwo() {
-        return sourceTwo;
-    }
-
     @PostConstruct
     public void init() throws IOException {
         try (var reader = new BufferedReader(
@@ -50,9 +42,6 @@ public class ReaderFile {
         try (var reader = new BufferedReader(
                 new InputStreamReader(dateResource.getInputStream(), StandardCharsets.UTF_8))) {
             this.dateSource = reader.lines().collect(Collectors.joining("\n"));
-//            List<String> dateSourceList = JSON.parseObject(this.dateSource, List.class);
-//            this.sourceOne = dateSourceList.get(0);
-//            this.sourceTwo = dateSourceList.get(1);
         }
         System.out.println(sourceOne);
     }
