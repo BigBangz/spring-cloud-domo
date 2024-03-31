@@ -1,5 +1,6 @@
 package modules.config.service;
 
+import modules.config.annotation.MetricTime;
 import modules.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,6 +23,7 @@ public class UserService {
             new User(2, "alice@example.com", "password", "Alice"), // alice
             new User(3, "tom@example.com", "password", "Tom")); // tom
 
+    @MetricTime("userlogin")
     public User login(String email, String password) {
         for (User user : users) {
             if (user.getEmail().equalsIgnoreCase(email) && user.getPassword().equals(password)) {
