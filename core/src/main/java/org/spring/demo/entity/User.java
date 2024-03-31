@@ -1,4 +1,4 @@
-package modules.entity;
+package org.spring.demo.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

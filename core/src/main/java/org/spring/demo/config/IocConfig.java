@@ -1,11 +1,11 @@
-package modules.config;
+package org.spring.demo.config;
 
-import modules.entity.DataSourcBean;
+import org.spring.demo.entity.DataSourcBean;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.*;
 
 @Configuration
-@ComponentScan
+@ComponentScan(basePackages = "org.spring.demo")
 @PropertySource("app.properties")
 @EnableAspectJAutoProxy
 public class IocConfig {

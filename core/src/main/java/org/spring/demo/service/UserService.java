@@ -1,7 +1,7 @@
-package modules.config.service;
+package org.spring.demo.service;
 
-import modules.config.annotation.MetricTime;
-import modules.entity.User;
+import org.spring.demo.annotation.MetricTime;
+import org.spring.demo.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

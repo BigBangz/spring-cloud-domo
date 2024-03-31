@@ -1,7 +1,6 @@
-package modules.config.util;
+package org.spring.demo.util;
 
 import com.alibaba.fastjson.JSON;
-import modules.config.annotation.MetricTime;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;

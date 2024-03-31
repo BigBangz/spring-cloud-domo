@@ -1,7 +1,7 @@
-import modules.config.IocConfig;
-import modules.config.service.DataSourceServie;
-import modules.config.service.UserService;
-import modules.entity.User;
+import org.spring.demo.config.IocConfig;
+import org.spring.demo.service.DataSourceServie;
+import org.spring.demo.service.UserService;
+import org.spring.demo.entity.User;
 import org.springframework.boot.*;
 import org.springframework.boot.autoconfigure.*;
 import org.springframework.context.ApplicationContext;

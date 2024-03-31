@@ -1,8 +1,8 @@
-package modules.config.service;
+package org.spring.demo.service;
 
-import modules.config.annotation.MetricTime;
-import modules.config.util.ReaderFile;
-import modules.entity.DataSourcBean;
+import org.spring.demo.annotation.MetricTime;
+import org.spring.demo.util.ReaderFile;
+import org.spring.demo.entity.DataSourcBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;

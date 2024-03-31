@@ -1,6 +1,6 @@
-package modules.config.service;
+package org.spring.demo.service;
 
-import modules.entity.User;
+import org.spring.demo.entity.User;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 

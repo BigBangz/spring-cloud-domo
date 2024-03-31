@@ -1,4 +1,4 @@
-package modules.config.annotation;
+package org.spring.demo.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
