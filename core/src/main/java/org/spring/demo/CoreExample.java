@@ -1,3 +1,5 @@
+package org.spring.demo;
+
 import org.spring.demo.config.IocConfig;
 import org.spring.demo.service.DataSourceServie;
 import org.spring.demo.service.UserService;
@@ -6,17 +8,9 @@ import org.springframework.boot.*;
 import org.springframework.boot.autoconfigure.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.bind.annotation.*;
 
-@Configuration
-@EnableAutoConfiguration
+@SpringBootApplication
 public class CoreExample {
-
-    @RequestMapping("/")
-    String home() {
-        return "Hello World2";
-    }
 
     public static void main(String[] args) throws Exception{
         SpringApplication.run(CoreExample.class, args);
