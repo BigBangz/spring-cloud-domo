@@ -1,4 +1,4 @@
-package org.spring.demo.Factory;
+package org.spring.demo.factory;
 
 import org.springframework.boot.env.YamlPropertySourceLoader;
 import org.springframework.core.env.PropertiesPropertySource;

@@ -1,6 +1,6 @@
 package org.spring.demo.config;
 
-import org.spring.demo.Factory.YamlPropertyResourceFactory;
+import org.spring.demo.factory.YamlPropertyResourceFactory;
 import org.spring.demo.entity.User;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
