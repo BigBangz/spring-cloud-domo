@@ -1,6 +1,7 @@
 package org.spring.demo.service;
 
 import org.spring.demo.annotation.MetricTime;
+import org.spring.demo.annotation.MyComponentScan;
 import org.spring.demo.util.ReaderFile;
 import org.spring.demo.entity.DataSourcBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,16 +16,19 @@ import org.springframework.stereotype.Component;
 @Component
 public class DataSourceServie {
 
-    @Autowired
     private ReaderFile readerFile;
 
-    @Autowired
-    @Qualifier("one")
     private DataSourcBean dataSourcOne;
 
-    @Autowired
-    @Qualifier("two")
     private DataSourcBean dataSourcTwo;
+
+    public DataSourceServie(ReaderFile readerFile,
+                            @Qualifier("one") DataSourcBean dataSourcOne,
+                            @Qualifier("two") DataSourcBean dataSourcTwo){
+        this.readerFile = readerFile;
+        this.dataSourcOne = dataSourcOne;
+        this.dataSourcTwo = dataSourcTwo;
+    }
 
     @Value("#{readerFile.sourceOne}")
     private String source;

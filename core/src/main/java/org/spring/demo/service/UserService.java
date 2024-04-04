@@ -11,8 +11,11 @@ import java.util.Objects;
 @Component
 public class UserService {
 
-    @Autowired(required = false)
     private MailService mailService;
+
+    public UserService(@Autowired(required = false) MailService mailService){
+        this.mailService = mailService;
+    }
 
     public void setMailService(@Autowired(required = false) MailService mailService) {
         this.mailService = mailService;
