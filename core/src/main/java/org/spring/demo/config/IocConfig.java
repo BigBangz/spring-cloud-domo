@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.*;
 
 @Configuration
-@ComponentScan(basePackages = {"org.spring.demo.service", "org.spring.demo.util"})
+@ComponentScan(basePackages = {"org.spring.demo.service", "org.spring.demo.util", "org.spring.demo.annotation"})
 @PropertySource("app.properties")
 @EnableAspectJAutoProxy
 public class IocConfig {
