@@ -6,9 +6,11 @@ import org.spring.demo.service.UserService;
 import org.spring.demo.entity.User;
 import org.springframework.boot.*;
 import org.springframework.boot.autoconfigure.*;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+@EnableCaching
 @SpringBootApplication
 public class CoreExample {
 
