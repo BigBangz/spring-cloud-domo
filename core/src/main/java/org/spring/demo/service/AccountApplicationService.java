@@ -6,6 +6,7 @@ import org.spring.demo.util.Encryption;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.UUID;
 
 
 /**
@@ -25,6 +26,8 @@ public class AccountApplicationService {
 
     public void createAccount(Account account) {
         account.setPassword(encoder.encode(account.getPassword()));
+        UUID uuid = UUID.randomUUID();
+        account.setId(uuid.getMostSignificantBits() ^ uuid.getLeastSignificantBits());
         repository.save(account);
     }
 

@@ -1,5 +1,10 @@
 package org.spring.demo.entity;
 
+import org.spring.demo.annotation.validation.group.AddGroup;
+import org.spring.demo.annotation.validation.group.UpdateGroup;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import java.io.Serializable;
 
 /**
@@ -10,13 +15,16 @@ import java.io.Serializable;
  **/
 public class BaseEntity implements Serializable {
 
-    private Integer id;
+    //添加分组信息：添加的时候不能有id，修改的时候却一定要有id
+    @Null(message = "id should be empty", groups = {AddGroup.class})
+    @NotNull(message = "id should not be empty", groups = {UpdateGroup.class})
+    private Long id;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

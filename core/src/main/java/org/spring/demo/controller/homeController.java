@@ -1,13 +1,16 @@
 package org.spring.demo.controller;
 
+import org.spring.demo.annotation.validation.group.AddGroup;
+import org.spring.demo.annotation.validation.group.UpdateGroup;
 import org.spring.demo.entity.Account;
 import org.spring.demo.service.AccountApplicationService;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.validation.Valid;
+import javax.validation.groups.Default;
 import javax.websocket.server.PathParam;
 
 /**
@@ -39,7 +42,8 @@ public class homeController {
      */
     @PostMapping(value = "/createUse")
     @ResponseBody
-    public Account createUser(@RequestBody @Valid Account user) {
+    // 不要漏掉默认分组Default.class，否则就只会校验groups
+    public Account createUser(@RequestBody @Validated({AddGroup.class, Default.class}) Account user) {
         service.createAccount(user);
         return user;
     }
@@ -50,9 +54,9 @@ public class homeController {
     @PutMapping("/update")
     @CacheEvict(key = "#user.username")
     @ResponseBody
-    public Object updateUser(@RequestBody @Valid Account user) {
-        service.updateAccount(user);
-        return user;
+    public Object updateUser(@RequestBody @Validated({UpdateGroup.class, Default.class}) Account account) {
+        service.updateAccount(account);
+        return account;
     }
 
 }

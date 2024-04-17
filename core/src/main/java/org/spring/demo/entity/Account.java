@@ -1,9 +1,13 @@
 package org.spring.demo.entity;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
+import java.util.Objects;
 
 /**
  * 用户实体
@@ -11,6 +15,8 @@ import javax.validation.constraints.Pattern;
  * @author bigbangz.github.io
  * @date 2024/4/3 15:48
  */
+@Data
+@AllArgsConstructor
 public class Account extends BaseEntity {
 
     @NotEmpty(message = "用户不允许为空")
@@ -36,59 +42,25 @@ public class Account extends BaseEntity {
 
     private String location;
 
-    public String getUsername() {
-        return username;
+    @Override
+    public String toString() {
+        return "Account{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", email='" + email + '\'' +
+                ", location='" + location + '\'' +
+                '}';
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Account account = (Account) o;
+        return Objects.equals(username, account.username) && Objects.equals(telephone, account.telephone) && Objects.equals(email, account.email);
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
 }
