@@ -1,8 +1,8 @@
 package org.spring.demo.annotation.validation;
 import org.spring.demo.annotation.AccountRepository;
 import org.spring.demo.entity.Account;
-import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.annotation.Resource;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.lang.annotation.Annotation;
@@ -18,7 +18,7 @@ import java.util.function.Predicate;
  **/
 public class AccountValidation<T extends Annotation> implements ConstraintValidator<T, Account> {
 
-    @Autowired(required=false)
+    @Resource
     protected AccountRepository repository;
 
     protected Predicate<Account> predicate = c -> true;
@@ -36,6 +36,7 @@ public class AccountValidation<T extends Annotation> implements ConstraintValida
 
     public static class UniqueAccountValidator extends AccountValidation<UniqueAccount> {
         public void initialize(UniqueAccount constraintAnnotation) {
+            System.out.println("初始化");
             predicate = c -> !repository.existsByUsernameOrEmailOrTelephone(c);
         }
     }

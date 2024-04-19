@@ -1,5 +1,6 @@
 package org.spring.demo.controller;
 
+import org.spring.demo.annotation.validation.UniqueAccount;
 import org.spring.demo.annotation.validation.group.AddGroup;
 import org.spring.demo.annotation.validation.group.UpdateGroup;
 import org.spring.demo.entity.Account;
@@ -18,8 +19,9 @@ import javax.websocket.server.PathParam;
  * @date 2024/4/1 15:07
  */
 @RestController
+@Validated
 @CacheConfig(cacheNames = "resource.account")
-public class homeController {
+public class HomeController {
 
     @GetMapping("/home")
     public String home() {
@@ -43,7 +45,7 @@ public class homeController {
     @PostMapping(value = "/createUse")
     @ResponseBody
     // 不要漏掉默认分组Default.class，否则就只会校验groups
-    public Account createUser(@RequestBody @Validated({AddGroup.class, Default.class}) Account user) {
+    public Account createUser(@RequestBody @Validated({AddGroup.class, Default.class}) @UniqueAccount Account user) {
         service.createAccount(user);
         return user;
     }
