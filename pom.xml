@@ -24,7 +24,7 @@
     <properties>
         <spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
         <spring.cloud.alibaba.version>2.2.1.RELEASE</spring.cloud.alibaba.version>
-        <nacos.version>1.2.1</nacos.version>
+        <nacos.version>2.3.2</nacos.version>
         <sentinel.version>1.7.1</sentinel.version>
         <rocketMQ.version>4.4.0</rocketMQ.version>
         <seata.version>1.1.0</seata.version>
@@ -86,6 +86,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-undertow</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
 
         <!--监控系统健康状况-->
