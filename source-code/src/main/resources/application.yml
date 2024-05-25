@@ -9,8 +9,6 @@ server:
     # 以下的配置会影响buffer,这些buffer会用于服务器连接的IO操作,有点类似netty的池化内存管理
     # 每块buffer的空间大小,越小的空间被利用越充分，不要设置太大，以免影响其他应用，合适即可
     buffer-size: 1024
-    # 每个区分配的buffer数量 , 所以pool的大小是buffer-size * buffers-per-region
-    buffers-per-region: 1024
     # 是否分配的直接内存(NIO直接分配的堆外内存)
     direct-buffers: true
 
@@ -19,8 +17,8 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
-        username: 'nacos'
-        password: 'nacos'
+        username: nacos
+        password: nacos
         metadata:
           current-version: V1
 

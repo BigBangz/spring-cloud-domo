@@ -13,7 +13,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 /**
  * @author bigbangz.github.io
@@ -24,6 +26,12 @@ public class GrayByVersionRule extends AbstractLoadBalancerRule {
 
     @Autowired
     private NacosDiscoveryProperties nacosProperties;
+
+    private AtomicInteger nextServerCounter;
+
+    public GrayByVersionRule() {
+        this.nextServerCounter = new AtomicInteger(0);
+    }
 
     @Override
     public void initWithNiwsConfig(IClientConfig iClientConfig) {
@@ -36,29 +44,42 @@ public class GrayByVersionRule extends AbstractLoadBalancerRule {
         log.info("当前服务：{}", clusterName);
         try {
             List<Instance> allInstances = getAllInstances(nacosProperties);
-            Optional<Instance> first = allInstances.stream().map(service -> {
+            List<Instance> serverList = allInstances.stream().map(service -> {
                 String version = service.getMetadata().get("current-version");
                 String name = service.getClusterName();
                 if (clusterName.equalsIgnoreCase(name) && "V1".equalsIgnoreCase(version)) {
                     return service;
                 }
                 return null;
-            }).findFirst();
-            Instance instance = first.get();
-            return new NacosServer(instance);
+            }).filter(Objects::nonNull).collect(Collectors.toList());
+            if (!serverList.isEmpty()) {
+                // 轮询算法
+                int i = incrementAndGetModulo(serverList.size());
+                log.info("当前：{}", i);
+                return new NacosServer(serverList.get(i));
+            }
         } catch (NacosException e) {
             log.error("负载均衡算法选择异常:{}", e);
         }
         return null;
     }
 
+    private int incrementAndGetModulo(int modulo) {
+        int current;
+        int next;
+        do {
+            current = this.nextServerCounter.get();
+            next = (current + 1) % modulo;
+        } while(!this.nextServerCounter.compareAndSet(current, next));
+
+        return next;
+    }
+
     /**
      * 方法实现说明:获取被调用服务的所有实例
-     *
      * @param discoveryProperties nacos的配置
-     * @author:smlz
-     * @return: List
-     * @exception: NacosException
+     * @return
+     * @throws NacosException
      */
     private List<Instance> getAllInstances(NacosDiscoveryProperties discoveryProperties) throws NacosException {
 
