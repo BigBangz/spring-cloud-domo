@@ -1,0 +1,24 @@
+server:
+  #端口号
+  port: 9999
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        username: 'nacos'
+        password: 'nacos'
+    gateway: #gateway
+      discovery:
+        locator:
+          enabled: false  #q 即是否可以通过微服务的名称直接调用接口 【默认值false, 建议保持false】
+      routes:
+        - id: source-code
+          uri: lb://source-code
+          order: -1
+          predicates:
+            - Path=/source-code/**
+
+  application:
+    name: gateway

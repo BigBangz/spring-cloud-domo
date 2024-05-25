@@ -34,7 +34,7 @@ public class HomeController {
     /**
      * 根据用户名称获取用户详情
      */
-    @GetMapping(value = "/{username}")
+    @GetMapping(value = "/username")
     public Account getUser(@PathParam("username") String username) {
         return service.findAccountByUsername(username);
     }
