@@ -1,10 +1,9 @@
 server:
-  port: 8092
+  port: 8081
   undertow:
      io-threads: 16
      worker-threads: 256
      buffer-size: 1024
-     buffers-per-region: 1024
      direct-buffers: true
 #AOP
 spring.aop.auto:  true
@@ -21,9 +20,4 @@ spring:
         # 配置nacos注册中心地址
         server-addr: localhost:8848
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
 

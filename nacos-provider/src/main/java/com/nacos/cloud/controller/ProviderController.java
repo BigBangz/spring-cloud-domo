@@ -1,4 +1,4 @@
-package com.nacos;
+package com.nacos.cloud.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
